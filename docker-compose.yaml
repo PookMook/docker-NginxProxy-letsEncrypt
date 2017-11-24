@@ -65,3 +65,47 @@ services:
 #      name: root_default
 #
 ##############################
+#
+# Other exemple
+#
+##############################
+#version: "2"
+#services:
+#  openraid:
+#    restart: always
+#    image: openraid
+#    build: ./src
+#    container_name: openRaid
+#    links:
+#      - database-openraid
+#      - redis-openraid
+#    environment:
+#      - VIRTUAL_HOST=thecabal.online
+#      - VIRTUAL_NETWORK=nginx-proxy
+#      - VIRTUAL_PORT=80
+#      - LETSENCRYPT_HOST=thecabal.online
+#      - LETSENCRYPT_EMAIL=arthur.juchereau@gmail.com
+#
+#  database-openraid:
+#    restart: always
+#    image: mysql
+#    container_name: database-openraid
+#    command: mysqld --user=root --verbose
+#    volumes:
+#      - /opt/mysqlOpenRaid:/var/lib/mysql
+#    environment:
+#      MYSQL_DATABASE: "openRaid"
+#      MYSQL_USER: "openRaid"
+#      MYSQL_PASSWORD: "YOURPASSWORD"
+#      MYSQL_ROOT_PASSWORD: "YOURPASSWORD"
+#      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+#  redis-openraid:
+#      restart: always
+#      image: redis
+#      container_name: redis-openraid
+#networks:
+#  default:
+#    external:
+#      name: root_default
+#
+########################################
